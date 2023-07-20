@@ -1,8 +1,8 @@
 const searchFilms = async () => {
     try {
         const movieTitle = document.getElementById("movieTitle").value.trim();
-
-        const response = await fetch(`http://www.omdbapi.com/?s=${encodeURIComponent(movieTitle)}&type=movie&apikey=f4216ca6`);
+        const apiKey = process.env.API_KEY;
+        const response = await fetch(`http://www.omdbapi.com/?s=${encodeURIComponent(movieTitle)}&type=movie&apikey=${apiKey}`);
         const films = await response.json();
         const infoFilm = films.Search;
         const filmContainer = document.querySelector('.film-container');
